@@ -21,32 +21,21 @@
                 }).done(function(data) {
                     // var obj = JSON.parse(data);
                     var obj = data;
-                    _chart_container.append('<canvas id="chart_statistics"><canvas>');
+                    _chart_container.append('<canvas id="chart_statistics"></canvas>');
                     chart = new Chart(document.getElementById('chart_statistics'), {
                         type: 'line',
                         data: obj.chart,
                         options: {
                             responsive: true,
-                            title: {
-                                display: false
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false
+                            plugins: {
+                                title: { display: false },
+                                tooltip: { mode: 'index', intersect: false }
                             },
                             scales: {
-                                xAxes: [{
-                                    display: true,
-                                }],
-                                yAxes: [{
-                                    display: true
-                                }]
+                                x: { display: true },
+                                y: { display: true }
                             },
-                            elements: {
-                                line: {
-                                    tension: 0
-                                }
-                            }
+                            elements: { line: { tension: 0 } }
                         }
                     });
                 }).fail(function(data) {
